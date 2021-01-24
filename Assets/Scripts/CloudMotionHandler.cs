@@ -8,8 +8,7 @@ public class CloudMotionHandler : MonoBehaviour
     float cloudSpeed = 0.2f;
     [SerializeField]
     float leftBorder, respawnDistance;
-
-    // Update is called once per frame
+    
     void FixedUpdate()
     {
         transform.Translate(Vector3.right * Time.deltaTime * cloudSpeed);
