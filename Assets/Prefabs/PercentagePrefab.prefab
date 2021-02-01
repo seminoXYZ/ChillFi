@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1000, y: 0}
-  m_SizeDelta: {x: -2000, y: 0}
+  m_AnchoredPosition: {x: 1100, y: 0}
+  m_SizeDelta: {x: -2200, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2427165051838257203
 CanvasRenderer:
@@ -89,6 +89,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6704072820901784758}
   - component: {fileID: 2598466084448009698}
+  - component: {fileID: 1601320876310473449}
   m_Layer: 5
   m_Name: PercentagePrefab
   m_TagString: Untagged
@@ -127,6 +128,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5445466147232928016}
   m_CullTransparentMesh: 1
+--- !u!114 &1601320876310473449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5445466147232928016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7175b8a7b0ffa04eb6ef3d2e4554dce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ticker: GME
+  bid: {fileID: 2824729818146061354}
+  price: {fileID: 4839998743971281684}
+  volume: {fileID: 6113513355525542711}
+  floatShort: {fileID: 1177863725831209807}
 --- !u!1 &6006302488815283287
 GameObject:
   m_ObjectHideFlags: 0
@@ -161,7 +179,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 100, y: 0}
+  m_AnchoredPosition: {x: 300, y: 0}
   m_SizeDelta: {x: -2200, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9212904982605678717
@@ -297,7 +315,7 @@ GameObject:
   - component: {fileID: 3719376592127394404}
   - component: {fileID: 4839998743971281684}
   m_Layer: 5
-  m_Name: Percentage
+  m_Name: Price
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
