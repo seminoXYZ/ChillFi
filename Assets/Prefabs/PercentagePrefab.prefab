@@ -67,7 +67,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: d291a9de71825d44b83d03ba854da2ec, type: 3}
-    m_FontSize: 190
+    m_FontSize: 150
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 1
@@ -140,8 +140,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7175b8a7b0ffa04eb6ef3d2e4554dce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ticker: GME
-  bid: {fileID: 2824729818146061354}
+  symbol: ETH
+  position: {fileID: 2824729818146061354}
   price: {fileID: 4839998743971281684}
   volume: {fileID: 6113513355525542711}
   floatShort: {fileID: 1177863725831209807}
@@ -212,7 +212,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: d291a9de71825d44b83d03ba854da2ec, type: 3}
-    m_FontSize: 190
+    m_FontSize: 150
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 1
@@ -236,7 +236,7 @@ GameObject:
   - component: {fileID: 290937061080153024}
   - component: {fileID: 2824729818146061354}
   m_Layer: 5
-  m_Name: Bid
+  m_Name: Symbol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -291,7 +291,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: d291a9de71825d44b83d03ba854da2ec, type: 3}
-    m_FontSize: 170
+    m_FontSize: 150
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
@@ -370,7 +370,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: d291a9de71825d44b83d03ba854da2ec, type: 3}
-    m_FontSize: 170
+    m_FontSize: 150
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 1

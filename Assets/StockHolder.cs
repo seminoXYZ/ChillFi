@@ -3,21 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[System.Serializable]
 public struct Ticker
 {
+    public string name;
     public string symbol;
-    public double last;
-    public int volume;
+    public float priceUsd;
+    public float percentChange24hUsd;
 }
 
 public class StockHolder : MonoBehaviour
 {
     [SerializeField]
-    string ticker;
+    string symbol;
     [SerializeField]
-    Text bid, price, volume, floatShort;
+    Text position, price, volume, floatShort;
 
-    public delegate void OnTickerReceived(Ticker ticker);
+    public delegate void OnTickerReceived(Tickers tickers);
     public static OnTickerReceived onTickerReceived;
 
     // Start is called before the first frame update
@@ -29,18 +31,21 @@ public class StockHolder : MonoBehaviour
     void RequestTicker()
     {
         onTickerReceived += OnTicker;
-        PolygonRESTService.instance.GetTicker(ticker);
+        ShrimpyService.instance.GetTicker(symbol);
     }
 
-    void OnTicker(Ticker ticker)
+    void OnTicker(Tickers tickers)
     {
-        if(ticker.symbol == this.ticker)
+        foreach(Ticker ticker in tickers.tickers)
+        if(ticker.symbol == this.symbol)
         {
-            bid.text = ticker.symbol;
-            price.text = "$" + ticker.last.ToString();
-            volume.text = ((ticker.volume / 1000000f).ToString()).Substring(0,4) + "M";
+            position.text = ticker.symbol;
+            price.text = "$" + ticker.priceUsd.ToString();
+            Debug.Log(ticker.priceUsd);
+            volume.text = ((ticker.percentChange24hUsd).ToString());
+            Debug.Log(ticker.percentChange24hUsd);
             floatShort.text = Random.Range(100, 121).ToString() + " %";
-            Invoke("RequestTicker", 10f);
+            Invoke("RequestTicker", 60f);
         }
     }
 }
