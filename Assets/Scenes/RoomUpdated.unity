@@ -12978,9 +12978,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4376c9947d4d8be4f9940123a482df42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tickersURL: https://dev-api.shrimpy.io/v1/exchanges/kucoin/ticker/
-  apiKey: 
-  tickers: 
+  symbols:
+  - BTC
+  - ETH
+  - SUCHI
+  - AAVE
+  - NEO
+  - VET
+  - KSC
+  exchangesURL: https://dev-api.shrimpy.io/v1/list_exchanges
+  tickersURL: https://dev-api.shrimpy.io/v1/exchanges/
+  candlesURL: https://dev-api.shrimpy.io/v1/exchanges/coinbasepro/candles?
+  apiKey: 8a44b4b6c02acbb5551e2ecaef0d5e314777765c931a67b3172c7e520b3989d0
+  secretKey: b77777df949a558bbe402954a3f8f38fd163e8f95f8e51fcc2898d9184c29355b02055581747d54bdfd4849af590e6542df8882f69bdfc1985668f4b7041a26d
+  tickersString: 
+  exchangesString: 
+  candlesString: 
+  exchanges:
+    exchanges: []
+  nonce: 0
+  tickers: []
+  candles: []
 --- !u!4 &925214033
 Transform:
   m_ObjectHideFlags: 0
@@ -16638,6 +16656,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8266461157987532946, guid: 5a0551dce92d214429ef90ea4e05ccce, type: 3}
+      propertyPath: SpotifyService
+      value: 
+      objectReference: {fileID: 679414920}
     - target: {fileID: 8266461158662130327, guid: 5a0551dce92d214429ef90ea4e05ccce, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -17034,6 +17056,10 @@ PrefabInstance:
     - target: {fileID: 5445466147232928016, guid: eb588846652edf6489f310f2fcc3cdd4, type: 3}
       propertyPath: m_Name
       value: PercentagePrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113513355525542711, guid: eb588846652edf6489f310f2fcc3cdd4, type: 3}
+      propertyPath: m_Text
+      value: '-'
       objectReference: {fileID: 0}
     - target: {fileID: 6704072820901784758, guid: eb588846652edf6489f310f2fcc3cdd4, type: 3}
       propertyPath: m_Pivot.x

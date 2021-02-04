@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2427165051838257203}
   - component: {fileID: 1177863725831209807}
   m_Layer: 5
-  m_Name: FloatShorted
+  m_Name: Change
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -144,7 +144,7 @@ MonoBehaviour:
   position: {fileID: 2824729818146061354}
   price: {fileID: 4839998743971281684}
   volume: {fileID: 6113513355525542711}
-  floatShort: {fileID: 1177863725831209807}
+  change: {fileID: 1177863725831209807}
 --- !u!1 &6006302488815283287
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,7 +223,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 34.5M
+  m_Text: '-'
 --- !u!1 &6880174983170994129
 GameObject:
   m_ObjectHideFlags: 0
