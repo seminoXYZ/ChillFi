@@ -8,9 +8,8 @@ public class ShrimpyService : MonoBehaviour
     public static ShrimpyService instance;
 
     public float orderBookRequestPause = 10f;
-
-    [SerializeField]
-    string[] symbols;
+    
+    public string[] symbols;
 
     [SerializeField]
     string exchangesURL, tickersURL, candlesURL, orderbooksURL, apiKey, secretKey, tickersString, exchangesString, candlesString, orderbookString;
@@ -47,8 +46,8 @@ public class ShrimpyService : MonoBehaviour
 
     void OnExchangesReceived()
     {
-        GetTickers();
-        GetVolumes();
+        //GetTickers();
+        //GetVolumes();
     }
 
     public void GetTickers()
