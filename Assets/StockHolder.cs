@@ -12,7 +12,7 @@ public class StockHolder : MonoBehaviour
     Text position, price, volume, change;
 
     float volumeValue;
-
+    
     public delegate void OnTickerReceived(Tickers tickers);
     public static OnTickerReceived onTickerReceived;
 
@@ -50,7 +50,7 @@ public class StockHolder : MonoBehaviour
         {
             if (candles.candles.Length == 0)
             {
-                Debug.Log("NULL");
+                //Debug.Log("NULL");
                 return;
             }
 
@@ -58,7 +58,7 @@ public class StockHolder : MonoBehaviour
 
             if(rawVolume != "")
             {
-                Debug.Log(rawVolume + " for " + symbol);
+                //Debug.Log(rawVolume + " for " + symbol);
                 string optimizedVolume = rawVolume.Substring(0, rawVolume.IndexOf("."));
 
                 volumeValue = volumeValue + (int.Parse(optimizedVolume) / 1000);

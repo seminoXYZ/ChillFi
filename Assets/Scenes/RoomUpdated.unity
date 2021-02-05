@@ -446,6 +446,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6793021526800255554, guid: b544ee789858f434c843e48699a8ba0a, type: 3}
+      propertyPath: exchange
+      value: Binance
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b544ee789858f434c843e48699a8ba0a, type: 3}
 --- !u!224 &33668416 stripped
@@ -755,7 +759,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '% FloatShorted'
+  m_Text: '% Change'
 --- !u!222 &105053931
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12989,16 +12993,20 @@ MonoBehaviour:
   exchangesURL: https://dev-api.shrimpy.io/v1/list_exchanges
   tickersURL: https://dev-api.shrimpy.io/v1/exchanges/
   candlesURL: https://dev-api.shrimpy.io/v1/exchanges/coinbasepro/candles?
+  orderbooksURL: https://dev-api.shrimpy.io/v1/orderbooks?exchange=
   apiKey: 8a44b4b6c02acbb5551e2ecaef0d5e314777765c931a67b3172c7e520b3989d0
   secretKey: b77777df949a558bbe402954a3f8f38fd163e8f95f8e51fcc2898d9184c29355b02055581747d54bdfd4849af590e6542df8882f69bdfc1985668f4b7041a26d
   tickersString: 
   exchangesString: 
   candlesString: 
+  orderbookString: 
   exchanges:
     exchanges: []
   nonce: 0
   tickers: []
   candles: []
+  orderbooks:
+    orderbooks: []
 --- !u!4 &925214033
 Transform:
   m_ObjectHideFlags: 0
@@ -13153,6 +13161,10 @@ PrefabInstance:
     - target: {fileID: 367992565543363065, guid: b544ee789858f434c843e48699a8ba0a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6793021526800255554, guid: b544ee789858f434c843e48699a8ba0a, type: 3}
+      propertyPath: exchange
+      value: Bitstamp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b544ee789858f434c843e48699a8ba0a, type: 3}
@@ -13729,6 +13741,10 @@ PrefabInstance:
     - target: {fileID: 367992565543363065, guid: b544ee789858f434c843e48699a8ba0a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6793021526800255554, guid: b544ee789858f434c843e48699a8ba0a, type: 3}
+      propertyPath: exchange
+      value: CoinbasePro
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b544ee789858f434c843e48699a8ba0a, type: 3}
@@ -15190,6 +15206,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6793021526800255554, guid: b544ee789858f434c843e48699a8ba0a, type: 3}
+      propertyPath: exchange
+      value: Bittrex
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b544ee789858f434c843e48699a8ba0a, type: 3}
 --- !u!224 &1465225555 stripped
@@ -16342,6 +16362,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6793021526800255554, guid: b544ee789858f434c843e48699a8ba0a, type: 3}
+      propertyPath: exchange
+      value: HitBtc
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b544ee789858f434c843e48699a8ba0a, type: 3}
 --- !u!224 &1870701756 stripped
@@ -16443,6 +16467,10 @@ PrefabInstance:
     - target: {fileID: 367992565543363065, guid: b544ee789858f434c843e48699a8ba0a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6793021526800255554, guid: b544ee789858f434c843e48699a8ba0a, type: 3}
+      propertyPath: exchange
+      value: Kraken
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b544ee789858f434c843e48699a8ba0a, type: 3}

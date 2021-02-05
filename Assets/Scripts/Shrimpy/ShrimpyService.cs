@@ -11,7 +11,7 @@ public class ShrimpyService : MonoBehaviour
     string[] symbols;
 
     [SerializeField]
-    string exchangesURL, tickersURL, candlesURL, apiKey, secretKey, tickersString, exchangesString, candlesString;
+    string exchangesURL, tickersURL, candlesURL, orderbooksURL, apiKey, secretKey, tickersString, exchangesString, candlesString, orderbookString;
 
     [SerializeField]
     Exchanges exchanges;
@@ -24,6 +24,9 @@ public class ShrimpyService : MonoBehaviour
 
     [SerializeField]
     List<Candles> candles;
+
+    [SerializeField]
+    Orderbooks orderbooks;
 
     void Awake()
     {
@@ -142,6 +145,31 @@ public class ShrimpyService : MonoBehaviour
             Candles candlesData = JsonUtility.FromJson<Candles>(candlesString);
             candles.Add(candlesData);
             StockHolder.onCandlesReceived(candlesData, symbol);
+        }
+    }
+
+    public IEnumerator GetOrderbookReq(string exchange)
+    {
+        UnityWebRequest www = UnityWebRequest.Get(orderbooksURL + exchange);
+        www.SetRequestHeader("DEV-SHRIMPY-API-KEY", apiKey);
+        www.SetRequestHeader("DEV-SHRIMPY-API-NONCE", nonce.ToString());
+
+        nonce++;
+        yield return www.SendWebRequest();
+
+        if (www.isNetworkError || www.isHttpError)
+        {
+            Debug.Log(www.error);
+            yield return new WaitForSeconds(60f);
+            StartCoroutine(GetOrderbookReq(exchange));
+        }
+        else
+        {
+            orderbookString = www.downloadHandler.text;
+            orderbookString = "{\"orderbooks\":" + orderbookString + "}";
+            Orderbooks orderBooksData = JsonUtility.FromJson<Orderbooks>(orderbookString);
+            LastTradeHolder.onOrderBooksReceived(orderBooksData);
+            orderbooks = orderBooksData;
         }
     }
 }
