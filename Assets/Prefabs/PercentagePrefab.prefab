@@ -78,7 +78,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 127%
+  m_Text: '-'
 --- !u!1 &5445466147232928016
 GameObject:
   m_ObjectHideFlags: 0
@@ -302,7 +302,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: GME
+  m_Text: '-'
 --- !u!1 &9016324209668762822
 GameObject:
   m_ObjectHideFlags: 0
@@ -381,4 +381,4 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: $300
+  m_Text: '-'

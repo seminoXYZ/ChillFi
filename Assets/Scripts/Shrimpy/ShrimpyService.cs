@@ -7,6 +7,8 @@ public class ShrimpyService : MonoBehaviour
 {
     public static ShrimpyService instance;
 
+    public float orderBookRequestPause = 10f;
+
     [SerializeField]
     string[] symbols;
 

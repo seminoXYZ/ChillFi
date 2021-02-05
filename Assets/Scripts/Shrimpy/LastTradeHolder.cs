@@ -42,7 +42,7 @@ public class LastTradeHolder : MonoBehaviour
                 quantity.text = orderBooks.orderbooks[0].orderBooks[0].orderBook.bids[0].quantity;
             }
 
-            Invoke("GetOrderBooksWithDelay", 60f);
+            Invoke("GetOrderBooksWithDelay", ShrimpyService.instance.orderBookRequestPause);
         }
     }
 
