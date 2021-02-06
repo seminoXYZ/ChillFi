@@ -10,45 +10,29 @@ public class LastTradeHolder : MonoBehaviour
     [SerializeField]
     Text symbol, bidType, price, quantity;
     
-    [SerializeField]
-    string exchange;
-    
-    public delegate void OnOrderBooksReceived(Orderbooks candles);
-    public static OnOrderBooksReceived onOrderBooksReceived;
+    public void InitTradeData(Order order, string symbol, string equivalent)
+    {
+        this.symbol.text = symbol;
+        int bidTypeIndex = UnityEngine.Random.Range(0, 2);
 
-    void Start()
-    {
-        onOrderBooksReceived += OnOrderBook;
-        ShrimpyService.instance.StartCoroutine(ShrimpyService.instance.GetOrderbookReq(exchange));
-    }
-    
-    private void OnOrderBook(Orderbooks orderBooks)
-    {
-        if (orderBooks.orderbooks[0].orderBooks[0].exchange == exchange)
+        if (bidTypeIndex == 0)
         {
-            symbol.text = orderBooks.orderbooks[0].baseSymbol;
-            int bidTypeIndex = UnityEngine.Random.Range(0, 2);
+            int askIndex = 0;
+            if (order.asks[0].quantity == quantity.text) askIndex = 1;
+            bidType.text = "SELL";
+            price.text = order.asks[askIndex].price;
 
-            if (bidTypeIndex == 0)
-            {
-                bidType.text = "SELL";
-                price.text = orderBooks.orderbooks[0].orderBooks[0].orderBook.asks[0].price;
-                quantity.text = orderBooks.orderbooks[0].orderBooks[0].orderBook.asks[0].quantity;
-            }   
-            else
-            {
-                bidType.text = "BUY";
-                price.text = orderBooks.orderbooks[0].orderBooks[0].orderBook.bids[0].price;
-                quantity.text = orderBooks.orderbooks[0].orderBooks[0].orderBook.bids[0].quantity;
-            }
-
-            Invoke("GetOrderBooksWithDelay", ShrimpyService.instance.orderBookRequestPause);
+            quantity.text = "$" + (float.Parse(order.asks[askIndex].quantity.Replace(".","")) * float.Parse(order.asks[askIndex].price.Replace(".", "")) * ShrimpyService.instance.btcPrice).ToString().Substring(0,7);
         }
-    }
+        else
+        {
+            int bidIndex = 0;
+            if (order.bids[0].quantity == quantity.text) bidIndex = 1;
+            bidType.text = "BUY";
+            price.text = order.bids[bidIndex].price;
 
-    void GetOrderBooksWithDelay()
-    {
-        ShrimpyService.instance.StartCoroutine(ShrimpyService.instance.GetOrderbookReq(exchange));
+            quantity.text = "$" + (float.Parse(order.bids[bidIndex].quantity.Replace(".", "")) * float.Parse(order.bids[bidIndex].price.Replace(".", "")) * ShrimpyService.instance.btcPrice).ToString().Substring(0, 7);
+        }
     }
 }
 

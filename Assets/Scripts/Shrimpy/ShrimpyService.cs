@@ -12,20 +12,19 @@ public class ShrimpyService : MonoBehaviour
     public string[] symbols;
 
     [SerializeField]
+    string referenceExchange = "Binance";
+
+    public float btcPrice;
+
+    [SerializeField]
     string exchangesURL, tickersURL, candlesURL, orderbooksURL, apiKey, secretKey, tickersString, exchangesString, candlesString, orderbookString;
 
     [SerializeField]
-    Exchanges exchanges;
-
+    GameObject lastTradePrefab, content;
+    
     [SerializeField]
     int nonce;
-
-    [SerializeField]
-    List<Tickers> tickers;
-
-    [SerializeField]
-    List<Candles> candles;
-
+    
     [SerializeField]
     Orderbooks orderbooks;
 
@@ -36,120 +35,20 @@ public class ShrimpyService : MonoBehaviour
 
     private void Start()
     {
-        GetExchanges();
-    }
-
-    void GetExchanges()
-    {
-        StartCoroutine(GetExchangesReq());
-    }
-
-    void OnExchangesReceived()
-    {
-        //GetTickers();
-        //GetVolumes();
-    }
-
-    public void GetTickers()
-    {
-        foreach (Exchange exchange in exchanges.exchanges)
-            GetTicker(exchange.exchange);
+        GetLastTrade();
     }
     
-    void GetVolumes()
+    void OnExchangesReceived()
     {
-        foreach (Exchange exchange in exchanges.exchanges)
-            foreach (string symbol in symbols)
-                GetVolume(exchange.exchange, symbol);
+        Invoke("GetLastTrade", 2f);
     }
 
-    public void GetTicker(string exchange)
+    void GetLastTrade()
     {
-        StartCoroutine(GetTickerReq(exchange));
+        StartCoroutine(GetOrderbookReq(referenceExchange, symbols[Random.Range(0, symbols.Length)]));
     }
-
-    public void GetVolume(string exchange, string symbol)
-    {
-        StartCoroutine(GetCandlesReq(exchange, symbol));
-    }
-
-    IEnumerator GetExchangesReq()
-    {
-        UnityWebRequest www = UnityWebRequest.Get(exchangesURL);
-        www.SetRequestHeader("DEV-SHRIMPY-API-KEY", apiKey);
-        www.SetRequestHeader("DEV-SHRIMPY-API-NONCE", nonce.ToString());
-
-        nonce++;
-        yield return www.SendWebRequest();
-
-        if (www.isNetworkError || www.isHttpError)
-        {
-            Debug.Log(www.error);
-            yield return new WaitForSeconds(60f);
-            StartCoroutine(GetExchangesReq());
-        }
-        else
-        {
-            exchangesString = www.downloadHandler.text;
-            exchangesString = "{\"exchanges\":" + exchangesString + "}";
-            exchanges = JsonUtility.FromJson<Exchanges>(exchangesString);
-            OnExchangesReceived();
-        }
-    }
-
-    IEnumerator GetTickerReq(string exchange)
-    {
-        UnityWebRequest www = UnityWebRequest.Get(tickersURL + exchange + "/ticker/");
-        www.SetRequestHeader("DEV-SHRIMPY-API-KEY", apiKey);
-        www.SetRequestHeader("DEV-SHRIMPY-API-NONCE", nonce.ToString());
-
-        nonce++;
-        yield return www.SendWebRequest();
-
-        if (www.isNetworkError || www.isHttpError)
-        {
-            Debug.Log(www.error);
-            yield return new WaitForSeconds(60f);
-            StartCoroutine(GetTickerReq(exchange));
-        }
-        else
-        {
-            tickersString = www.downloadHandler.text;
-            tickersString = "{\"tickers\":" + tickersString + "}";
-            Tickers tickersData = JsonUtility.FromJson<Tickers>(tickersString);
-            tickersData.exchange = exchange;
-            tickers.Add(tickersData);
-
-            StockHolder.onTickerReceived(tickersData);
-        }
-    }
-
-    IEnumerator GetCandlesReq(string exchange, string symbol)
-    {
-        UnityWebRequest www = UnityWebRequest.Get(candlesURL + "quoteTradingSymbol=" + "USD" + "&baseTradingSymbol=" + symbol + "&interval=1d");
-        www.SetRequestHeader("DEV-SHRIMPY-API-KEY", apiKey);
-        www.SetRequestHeader("DEV-SHRIMPY-API-NONCE", nonce.ToString());
-
-        nonce++;
-        yield return www.SendWebRequest();
-
-        if (www.isNetworkError || www.isHttpError)
-        {
-            Debug.Log(www.error);
-            yield return new WaitForSeconds(60f);
-            StartCoroutine(GetCandlesReq(exchange, symbol));
-        }
-        else
-        {
-            candlesString = www.downloadHandler.text;
-            candlesString = "{\"candles\":" + candlesString + "}";
-            Candles candlesData = JsonUtility.FromJson<Candles>(candlesString);
-            candles.Add(candlesData);
-            StockHolder.onCandlesReceived(candlesData, symbol);
-        }
-    }
-
-    public IEnumerator GetOrderbookReq(string exchange)
+    
+    public IEnumerator GetOrderbookReq(string exchange, string symbol)
     {
         UnityWebRequest www = UnityWebRequest.Get(orderbooksURL + exchange);
         www.SetRequestHeader("DEV-SHRIMPY-API-KEY", apiKey);
@@ -161,16 +60,38 @@ public class ShrimpyService : MonoBehaviour
         if (www.isNetworkError || www.isHttpError)
         {
             Debug.Log(www.error);
-            yield return new WaitForSeconds(60f);
-            StartCoroutine(GetOrderbookReq(exchange));
+            Invoke("GetLastTrade", 2f);
         }
         else
         {
             orderbookString = www.downloadHandler.text;
             orderbookString = "{\"orderbooks\":" + orderbookString + "}";
             Orderbooks orderBooksData = JsonUtility.FromJson<Orderbooks>(orderbookString);
-            LastTradeHolder.onOrderBooksReceived(orderBooksData);
             orderbooks = orderBooksData;
+            GetSymbolTrade(orderBooksData, symbol);
         }
+    }
+
+    void GetSymbolTrade(Orderbooks orderBooksData, string symbol)
+    {
+        foreach(Orderbook orderBook in orderBooksData.orderbooks)
+        {
+            if (orderBook.baseSymbol == symbol && orderBook.quoteSymbol == "BTC")
+            {
+                LastTradeHolder lastTradeHolder = Instantiate(lastTradePrefab, content.transform).GetComponent<LastTradeHolder>();
+                RemoveTheTopTrade();
+                lastTradeHolder.InitTradeData(orderBook.orderBooks[0].orderBook, symbol, "BTC");
+                Invoke("GetLastTrade", 2f);
+                return;
+            }
+        }
+
+        Invoke("GetLastTrade", 2f);
+    }
+
+    void RemoveTheTopTrade()
+    {
+        if(content.transform.childCount > 6)
+            Destroy(content.transform.GetChild(0).gameObject);
     }
 }

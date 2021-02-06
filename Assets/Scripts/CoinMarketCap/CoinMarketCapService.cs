@@ -19,6 +19,11 @@ public class CoinMarketCapService : MonoBehaviour
 
     private void Start()
     {
+        GetPositions();
+    }
+
+    void GetPositions()
+    {
         StartCoroutine(GetListingReq());
     }
 
@@ -42,6 +47,7 @@ public class CoinMarketCapService : MonoBehaviour
             listingsString = "{\"listings\":" + listingsString + "}";
             listings = JsonUtility.FromJson<ListingsLatest>(listingsString);
             StockHolder.onListingsReceived(listings);
+            Invoke("GetPositions", 3f);
         }
     }
 }
