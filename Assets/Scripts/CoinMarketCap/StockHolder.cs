@@ -31,15 +31,15 @@ public class StockHolder : MonoBehaviour
 
                 position.text = symbol;
 
-                if(price.text != "$" + data.quote.USD.price)
-                    Debug.Log(symbol + " price changed to : " + data.quote.USD.price);
+                //if(price.text != "$" + data.quote.USD.price)
+                //    Debug.Log(symbol + " price changed to : " + data.quote.USD.price);
 
-                price.text = "$" + StringFormatter.FormatIntoTwoDecimalValue(data.quote.USD.price.ToString());
+                price.text = "$" + StringFormatter.GetAmericanFormat(StringFormatter.FormatIntoTwoDecimalValue(data.quote.USD.price.ToString()));
                 volume.text = StringFormatter.GetTwoDigitsValueWithMultiplier((ulong)data.quote.USD.volume_24h, 7);
                 if(data.quote.USD.percent_change_24h.ToString().Length > 7)
-                    change.text = data.quote.USD.percent_change_24h.ToString().Substring(0,7) + "%";
+                    change.text = StringFormatter.FormatIntoTwoDecimalValue(data.quote.USD.percent_change_24h.ToString().Substring(0, 7)).Replace(",",".") + "%";
                 else
-                    change.text = data.quote.USD.percent_change_24h.ToString() + "%";
+                    change.text = StringFormatter.FormatIntoTwoDecimalValue(data.quote.USD.percent_change_24h.ToString()).Replace(",", ".") + "%";
             }
         }
     }
