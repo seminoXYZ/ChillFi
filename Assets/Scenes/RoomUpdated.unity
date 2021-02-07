@@ -12935,6 +12935,7 @@ MonoBehaviour:
   - VET
   - DOGE
   referenceExchange: Binance
+  btcPrice: 0
   exchangesURL: https://dev-api.shrimpy.io/v1/list_exchanges
   tickersURL: https://dev-api.shrimpy.io/v1/exchanges/
   candlesURL: https://dev-api.shrimpy.io/v1/exchanges/coinbasepro/candles?
@@ -12947,11 +12948,7 @@ MonoBehaviour:
   orderbookString: 
   lastTradePrefab: {fileID: 367992565543363064, guid: b544ee789858f434c843e48699a8ba0a, type: 3}
   content: {fileID: 1673464705}
-  exchanges:
-    exchanges: []
   nonce: 0
-  tickers: []
-  candles: []
   orderbooks:
     orderbooks: []
 --- !u!4 &925214033

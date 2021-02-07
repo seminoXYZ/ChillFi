@@ -142,8 +142,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   symbol: {fileID: 2239350905289268031}
   bidType: {fileID: 367992564813629459}
-  price: {fileID: 7671009655468649461}
-  quantity: {fileID: 539000535385871389}
+  quantity: {fileID: 7671009655468649461}
+  cost: {fileID: 539000535385871389}
 --- !u!1 &2551083558914722226
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,7 +156,7 @@ GameObject:
   - component: {fileID: 1037977271015347379}
   - component: {fileID: 7671009655468649461}
   m_Layer: 5
-  m_Name: Price
+  m_Name: Quantity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -178,8 +178,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 25, y: 0}
-  m_SizeDelta: {x: -1950, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -2000, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1037977271015347379
 CanvasRenderer:
@@ -314,7 +314,7 @@ GameObject:
   - component: {fileID: 3451597625007276051}
   - component: {fileID: 539000535385871389}
   m_Layer: 5
-  m_Name: Quantity
+  m_Name: Cost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -336,8 +336,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 925, y: 0}
-  m_SizeDelta: {x: -1850, y: 0}
+  m_AnchoredPosition: {x: 900, y: 0}
+  m_SizeDelta: {x: -1800, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3451597625007276051
 CanvasRenderer:

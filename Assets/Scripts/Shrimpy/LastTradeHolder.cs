@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class LastTradeHolder : MonoBehaviour
 {
     [SerializeField]
-    Text symbol, bidType, price, quantity;
+    Text symbol, bidType, quantity, cost;
     
     public void InitTradeData(Order order, string symbol, string equivalent)
     {
@@ -18,20 +18,23 @@ public class LastTradeHolder : MonoBehaviour
         if (bidTypeIndex == 0)
         {
             int askIndex = 0;
-            if (order.asks[0].quantity == quantity.text) askIndex = 1;
+            if (order.asks[0].quantity == cost.text) askIndex = 1;
             bidType.text = "SELL";
-            price.text = order.asks[askIndex].price;
+            Debug.Log(order.asks[askIndex].quantity);
+            Debug.Log(StringFormatter.GetCorrectFloat(order.asks[askIndex].quantity));
+            quantity.text = StringFormatter.GetThreeDigitsValueWithMultiplier(float.Parse(order.asks[askIndex].quantity.Replace(".",",")), 7);//.Replace(".", "");
 
-            quantity.text = "$" + (float.Parse(order.asks[askIndex].quantity.Replace(".","")) * float.Parse(order.asks[askIndex].price.Replace(".", "")) * ShrimpyService.instance.btcPrice).ToString().Substring(0,7);
+            cost.text = "$" + StringFormatter.FormatIntoTwoDecimalValue((StringFormatter.GetCorrectFloat(order.asks[askIndex].quantity) * StringFormatter.GetCorrectFloat(order.asks[askIndex].price) * ShrimpyService.instance.btcPrice).ToString());
         }
         else
         {
             int bidIndex = 0;
-            if (order.bids[0].quantity == quantity.text) bidIndex = 1;
+            if (order.bids[0].quantity == cost.text) bidIndex = 1;
             bidType.text = "BUY";
-            price.text = order.bids[bidIndex].price;
+            Debug.Log(StringFormatter.GetCorrectFloat(order.bids[bidIndex].quantity));
+            quantity.text = StringFormatter.GetThreeDigitsValueWithMultiplier(float.Parse(order.bids[bidIndex].quantity.Replace(".", ",")), 7);//.Replace(".", "");
 
-            quantity.text = "$" + (float.Parse(order.bids[bidIndex].quantity.Replace(".", "")) * float.Parse(order.bids[bidIndex].price.Replace(".", "")) * ShrimpyService.instance.btcPrice).ToString().Substring(0, 7);
+            cost.text = "$" + StringFormatter.FormatIntoTwoDecimalValue((StringFormatter.GetCorrectFloat(order.bids[bidIndex].quantity) * StringFormatter.GetCorrectFloat(order.bids[bidIndex].price) * ShrimpyService.instance.btcPrice).ToString());
         }
     }
 }
