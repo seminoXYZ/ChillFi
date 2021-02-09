@@ -1,4 +1,5 @@
-# ChillFi
+
+![alt text](https://github.com/ssemino/ChillFi/blob/main/Assets/Resources/README/readme00.png)
  
  ## Introduction
  
@@ -24,5 +25,13 @@
 ### Disable Spotify AutoConnect
 For development and debug purposes you can disable this **AutoConnect** feature to not spend time to close **Spotify** Login page each time you enter Unity **PlayMode**.
 You can disable it in **SpotifyService** MonoBehaviour class at **SpotifyService** gameObject.
+
 ![alt text](https://github.com/ssemino/ChillFi/blob/main/Assets/Resources/README/readme01.png)
 
+### DeFi symbols setup
+
+If you need to change a list of DeFi symbols that comes from **CoinMarketCap** service, you just need to change a symbol to proper one in **ShrimpyService** MonoBehaviour class at **ShrimpyService** gameObject. You can also change the order of the symbols by changing it in this list.
+
+![alt text](https://github.com/ssemino/ChillFi/blob/main/Assets/Resources/README/readme02.png)
+
+**WARNING!** Make sure you set a proper symbol definition in this list, because if you will set incorrect value that **CoinMarketCap** doesn't have - the app will get an error.
