@@ -23,3 +23,6 @@
 
 ### Disable Spotify AutoConnect
 For development and debug purposes you can disable this **AutoConnect** feature to not spend time to close **Spotify** Login page each time you enter Unity **PlayMode**.
+You can disable it in **SpotifyService** MonoBehaviour class at **SpotifyService** gameObject.
+![alt text](https://github.com/ssemino/ChillFi/blob/main/Assets/Resources/README/readme01.png)
+
