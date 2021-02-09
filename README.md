@@ -35,3 +35,10 @@ If you need to change a list of DeFi symbols that comes from **CoinMarketCap** s
 ![alt text](https://github.com/ssemino/ChillFi/blob/main/Assets/Resources/README/readme02.png)
 
 **WARNING!** Make sure you set a proper symbol definition in this list, because if you will set incorrect value that **CoinMarketCap** doesn't have - the app will get an error.
+
+## DeFi APIs' workflow
+
+To get a live DeFi symbols data for our app we use **Shrimpy API** (https://developers.shrimpy.io/docs/) and **CoinMarketCap API** (https://coinmarketcap.com/api/documentation/v1/).
+The first one used to get the data for a small monitor and have some limitations during **Shrimpy** service policy. We have only 60 request per minute for one authenticated IP (that sends API-KEY request header) or just 10 requests per minute without API-KEY.
+Even though we have anough space to get a live trades data to show.
+**Shrimpy** gets OrderBook for us with all the current bids and asks. **SHrimpyService** class choose randomly bid or ask for us with a symbol from our list.
