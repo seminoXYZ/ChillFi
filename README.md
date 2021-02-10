@@ -51,7 +51,8 @@ If you want to change the current list of tickers on the left monitor ( streamed
 
 To get live cryptocurrency ticker data for our application we use: 
 
-**Shrimpy API** (https://developers.shrimpy.io/docs/) and 
+**Shrimpy API** (https://developers.shrimpy.io/docs/) 
+
 **CoinMarketCap API** (https://coinmarketcap.com/api/documentation/v1/).
 
 Shrimpy is used to receive data for the 'right' monitor currently titled "Latest Trades". This data comes with limitations in the **Shrimpy** service policy. We only have 60 request per minute for one authenticated IP (that sends API-KEY request header), or, 10 requests per minute without an API-KEY.
