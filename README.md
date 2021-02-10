@@ -10,7 +10,9 @@ Watch it live here: https://chillfi.live
 ## Necessary Software
 
 **ChillFi** game application to generate visuals including monitors
+
 **Spotify** to play music in your stream (no sound comes from the actual ChillFi game)
+
 **OBS Streamlabs** to gather your video/audio and stream to Youtube.
 
  ## Key Details
@@ -21,7 +23,7 @@ Watch it live here: https://chillfi.live
  Target project platform is **Standalone** (Windows and OSX), however it's possible to compile it for mobile platforms if needed.
  
  **WARNING!**
- To get the proper version of Unity head to the archive page here: https://unity3d.com/ru/get-unity/download/archive
+ To get the proper version of Unity go to the archive page here: https://unity3d.com/ru/get-unity/download/archive
  
  ## Quick Start Guide
  
