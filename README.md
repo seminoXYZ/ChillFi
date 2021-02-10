@@ -7,7 +7,7 @@ ChillFi is the love child between Chill #LoFi beats and #DeFi trading. It stream
 
 Watch it live here: https://chillfi.live
 
-## Necessary Software
+### Necessary Software
 
 **ChillFi** game application to generate visuals including monitors
 
@@ -15,7 +15,7 @@ Watch it live here: https://chillfi.live
 
 **OBS Streamlabs** to gather your video/audio and stream to Youtube.
 
- ## Key Details
+ ### Key Details
  
  If you want to copy this project you must use **Unity 2020.2.1f1**. Failing to do so will result in reimport for later versions to break the project's functionality.
  To retrieve the cryptocurrency pricing data we use **Shrimpy** and **CoinMarketCap** APIs.
@@ -39,7 +39,7 @@ You can disable it in **SpotifyService** MonoBehaviour class at **SpotifyService
 
 ![alt text](https://github.com/ssemino/ChillFi/blob/main/Assets/Resources/README/readme01.png)
 
-## DeFi Ticker Setup
+### DeFi Ticker Setup
 
 If you want to change the current list of tickers on the left monitor ( streamed from **CoinMarketCap** API), you need to change the ticker to an existing one in **ShrimpyService** MonoBehaviour class at **ShrimpyService** gameObject. You can also change the order of the symbols in this list.
 
@@ -47,7 +47,7 @@ If you want to change the current list of tickers on the left monitor ( streamed
 
 **WARNING!** Make sure to choose a proper ticker in the list. Incorrect or not covered tickers in **CoinMarketCap** will result in an error.
 
-## DeFi API Workflow
+### DeFi API Workflow
 
 To get live cryptocurrency ticker data for our application we use: 
 
