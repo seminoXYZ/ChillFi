@@ -9,16 +9,16 @@ public static class StringFormatter
         string multiplied = "";
 
         if (value < 1000)
-            multiplied = GetAmericanFormat(FormatIntoTwoDecimalValue(value.ToString()));
+            multiplied = GetAmericanFormat(FormatIntoTwoDecimalValue(value));
 
         if (value > 999 && value < 1000000)
-            multiplied = GetAmericanFormat(CutLenghtTo(FormatIntoTwoDecimalValue((value / 1000f).ToString()), digitsLimit)) + "K";
+            multiplied = GetAmericanFormat(FormatIntoTwoDecimalValue(value / 1000f)) + "K";
 
         if (value > 999999 && value < 1000000000)
-            multiplied = GetAmericanFormat(CutLenghtTo(FormatIntoTwoDecimalValue((value / 1000000f).ToString()), digitsLimit)) + "M";
+            multiplied = GetAmericanFormat(FormatIntoTwoDecimalValue(value / 1000000f)) + "M";
 
         if (value > 999999999)
-            multiplied = GetAmericanFormat(CutLenghtTo(FormatIntoTwoDecimalValue((value / 1000000000f).ToString()), digitsLimit)) + "B";
+            multiplied = GetAmericanFormat(FormatIntoTwoDecimalValue(value / 1000000000f)) + "B";
         
         return multiplied;
     }
@@ -28,106 +28,52 @@ public static class StringFormatter
         string multiplied = "";
 
         if (value < 1000)
-            multiplied = GetAmericanFormat(FormatIntoTwoDecimalValue(value.ToString()));
+            multiplied = GetAmericanFormat(FormatIntoTwoDecimalValue(value));
 
         if (value > 999 && value < 1000000)
-            multiplied = GetAmericanFormat(CutLenghtTo(FormatIntoTwoDecimalValue((value / 1000f).ToString()), digitsLimit)) + "K";
+            multiplied = GetAmericanFormat(FormatIntoTwoDecimalValue(value / 1000f)) + "K";
 
         if (value > 999999 && value < 1000000000)
-            multiplied = GetAmericanFormat(CutLenghtTo(FormatIntoTwoDecimalValue((value / 1000000f).ToString()), digitsLimit)) + "M";
+            multiplied = GetAmericanFormat(FormatIntoTwoDecimalValue(value / 1000000f)) + "M";
 
         if (value > 999999999)
-            multiplied = GetAmericanFormat(CutLenghtTo(FormatIntoTwoDecimalValue((value / 1000000000f).ToString()), digitsLimit)) + "B";
+            multiplied = GetAmericanFormat(FormatIntoTwoDecimalValue(value / 1000000000f)) + "B";
 
         return multiplied;
     }
 
-    public static string FormatIntoTwoDecimalValue(string source)
+    public static float FormatIntoTwoDecimalValue(float source)
     {
-        string result = "";
+        return (float)System.Math.Round(source * 100f) / 100f;
+    }
 
-        if (source.Contains(","))
-        {
-            if (source.Substring(source.IndexOf(",")).Length > 3)
-                result = source.Substring(0, source.IndexOf(",")) + source.Substring(source.IndexOf(","), 3);
-            else
-                result = source.Substring(0, source.IndexOf(",")) + source.Substring(source.IndexOf(","));
-        }
-        else
-            result = source;
-
-        return result;
+    public static float FormatIntoTwoDecimalValue(ulong source)
+    {
+        return (float)System.Math.Round(source * 100f) / 100f;
     }
     
-    static string CutLenghtTo(string source, int lenght)
+    public static string GetAmericanFormat(float source)
     {
-        if (source.Length > 7)
-            return source.Substring(0, lenght);
-        else
-            return source;
-    }
+        string result = source.ToString();
 
-    public static float GetCorrectFloat(string source)
-    {
-        source = source.Replace(".", ",");
-
-        float result = 0;
-        
-        try
+        if (source > 999.99f && source < 1000000)
         {
-            result = float.Parse(source);
-        }
-        catch (System.Exception e)
-        {
-            result = float.Parse(source.Substring(0, source.IndexOf(",")) + source.Substring(source.IndexOf(","), 3));
+            if(result.Contains("."))
+                result = result.Insert(result.IndexOf(".") - 3, ",");
+            else
+                result = result.Insert(result.Length - 3, ",");
         }
         
-        return result;
-    }
 
-    public static string GetAmericanFormat(string source)
-    {
-        string result = "";
-        string integers = "";
-        string decimals = "";
-
-        if (source.Contains(","))
+        if (source > 999999.99f && source < 1000000000)
         {
-            
-            integers = source.Substring(0, source.IndexOf(","));
-
-            if (integers.Length > 3 && integers.Length < 7)
-                integers = integers.Insert(source.IndexOf(",") - 3, ",");
-            else if (integers.Length > 6 && integers.Length < 10)
-            {
-                integers = integers.Insert(source.IndexOf(",") - 3, ",");
-                integers = integers.Insert(source.IndexOf(",") - 6, ",");
-            }
-
-
-                
-
-
-            decimals = source.Substring(source.IndexOf(",")).Replace(",", ".");
-
-            result = integers + decimals;
-            
+            if(result.Contains("."))
+                result = result.Insert(result.IndexOf(".") - 6, ",");
+            else
+                result = result.Insert(result.Length - 6, ",");
         }
-        else
-        {
-            integers = source;
-
-            if (source.Length > 3 && source.Length < 7)
-                integers = integers.Insert(integers.Length - 3, ",");
-
-            if (source.Length > 6 && source.Length < 10)
-                integers = integers.Insert(integers.Length - 6, ",");
-
-            result = integers + ".00";
-        }
+            
 
         return result;
     }
-
-
 }

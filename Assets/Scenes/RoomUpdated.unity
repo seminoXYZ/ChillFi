@@ -12062,7 +12062,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ClientId: d840cda53e0040b78f6db22ba606dc65
   ConnectionTimeout: 60
-  AutoConnect: 0
+  AutoConnect: 1
   UpdateFrequencyMs: 1000
   LogLevel: 1
   ReuseAuthTokens: 0

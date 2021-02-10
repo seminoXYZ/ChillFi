@@ -20,13 +20,12 @@ public class LastTradeHolder : MonoBehaviour
             int askIndex = 0;
             if (order.asks[0].quantity == cost.text) askIndex = 1;
             bidType.text = "SELL";
-            Debug.Log(order.asks[askIndex].quantity);
-            Debug.Log(StringFormatter.GetCorrectFloat(order.asks[askIndex].quantity));
-            quantity.text = StringFormatter.GetTwoDigitsValueWithMultiplier(float.Parse(order.asks[askIndex].quantity.Replace(".", ",")), 7);
-            if (quantity.text == "0.00")
+            Debug.Log(StringFormatter.FormatIntoTwoDecimalValue(float.Parse(order.asks[askIndex].quantity)));
+            quantity.text = StringFormatter.GetTwoDigitsValueWithMultiplier(float.Parse(order.asks[askIndex].quantity), 7);
+            if (quantity.text == "0.00" || quantity.text == "0")
                 quantity.text = "0.01";
 
-            string costString = StringFormatter.FormatIntoTwoDecimalValue((StringFormatter.GetCorrectFloat(order.asks[askIndex].quantity) * StringFormatter.GetCorrectFloat(order.asks[askIndex].price) * ShrimpyService.instance.btcPrice).ToString());
+            float costString = StringFormatter.FormatIntoTwoDecimalValue(float.Parse(order.asks[askIndex].quantity) * float.Parse(order.asks[askIndex].price) * ShrimpyService.instance.btcPrice);
             Debug.Log(costString);
             cost.text = "$" + StringFormatter.GetAmericanFormat(costString);
         }
@@ -35,14 +34,13 @@ public class LastTradeHolder : MonoBehaviour
             int bidIndex = 0;
             if (order.bids[0].quantity == cost.text) bidIndex = 1;
             bidType.text = "BUY";
-            Debug.Log(StringFormatter.GetCorrectFloat(order.bids[bidIndex].quantity));
-            quantity.text = StringFormatter.GetTwoDigitsValueWithMultiplier(float.Parse(order.bids[bidIndex].quantity.Replace(".", ",")), 7);
+            quantity.text = StringFormatter.GetTwoDigitsValueWithMultiplier(float.Parse(order.bids[bidIndex].quantity), 7);
             if (quantity.text == "0.00")
                 quantity.text = "0.01";
 
-            string costString = StringFormatter.FormatIntoTwoDecimalValue((StringFormatter.GetCorrectFloat(order.bids[bidIndex].quantity) * StringFormatter.GetCorrectFloat(order.bids[bidIndex].price) * ShrimpyService.instance.btcPrice).ToString());
+            float costString = StringFormatter.FormatIntoTwoDecimalValue(float.Parse(order.bids[bidIndex].quantity) * float.Parse(order.bids[bidIndex].price) * ShrimpyService.instance.btcPrice);
             Debug.Log(costString);
-            cost.text = "$" + StringFormatter.GetAmericanFormat(costString);
+            cost.text = "$" + StringFormatter.GetAmericanFormat(costString).ToString();
         }
     }
 }
