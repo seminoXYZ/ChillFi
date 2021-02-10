@@ -39,7 +39,7 @@ You can disable it in **SpotifyService** MonoBehaviour class at **SpotifyService
 
 ![alt text](https://github.com/ssemino/ChillFi/blob/main/Assets/Resources/README/readme01.png)
 
-### DeFi Ticker Setup
+## DeFi Ticker Setup
 
 If you want to change the current list of tickers on the left monitor ( streamed from **CoinMarketCap** API), you need to change the ticker to an existing one in **ShrimpyService** MonoBehaviour class at **ShrimpyService** gameObject. You can also change the order of the symbols in this list.
 
@@ -49,10 +49,11 @@ If you want to change the current list of tickers on the left monitor ( streamed
 
 ## DeFi API Workflow
 
-To get a live DeFi symbols data for our app we use: 
+To get live cryptocurrency ticker data for our application we use: 
+
 **Shrimpy API** (https://developers.shrimpy.io/docs/) and 
 **CoinMarketCap API** (https://coinmarketcap.com/api/documentation/v1/).
 
-Shrimpy is used to receive data for the right monitor titled "Latest Trades". This data comes with limitations in the **Shrimpy** service policy. We only have 60 request per minute for one authenticated IP (that sends API-KEY request header), or, 10 requests per minute without an API-KEY.
+Shrimpy is used to receive data for the 'right' monitor currently titled "Latest Trades". This data comes with limitations in the **Shrimpy** service policy. We only have 60 request per minute for one authenticated IP (that sends API-KEY request header), or, 10 requests per minute without an API-KEY.
 
-**Shrimpy** pulls in an OrderBook with live bids and asks. The **ShrimpyService** class then selects bids or asks at random from the pull request only choosing trades for tickers in our defined list on the left monitor. 
+**Shrimpy** pulls in an OrderBook with live bids and asks. The **ShrimpyService** class then selects bids and asks at random, choosing only the trades for tickers in our defined list on the 'left' monitor. 
