@@ -3,17 +3,17 @@
  
  ## Introduction
  
-ChillFi is the love child between Chill #LoFi beats and #DeFi trading. It streams 24/7 to Youtube, displays live cryptocurrency exchange data, and plays a copyright-free Spotify music playlist.
+ChillFi, or Chill Finance, is the love child between #LoFi beats and #DeFi trading. The procedurally generated game streams 24/7 to Youtube, displays live cryptocurrency exchange data, and plays a copyright-free Spotify music playlist.
 
 Watch it live here: https://chillfi.live
 
 ### Necessary Software
 
-**ChillFi** game application to generate visuals including monitors
+**ChillFi Unity Game** to generate your video stream
 
 **Spotify** to play music in your stream (no sound comes from the actual ChillFi game)
 
-**OBS Streamlabs** to gather your video/audio and stream to Youtube.
+**OBS Streamlabs** to gather your video/audio and stream to Youtube
 
  ### Key Details
  
@@ -34,8 +34,9 @@ Watch it live here: https://chillfi.live
  That happens because of the **Spotify4Unity** plugin that has been integrated to display the current track you are playing on **Spotify** during the streaming session.
 
 ### Disable Spotify AutoConnect
-For development and debug purposes you can disable this **AutoConnect** feature to not spend time to close **Spotify** Login page each time you enter Unity **PlayMode**.
-You can disable it in **SpotifyService** MonoBehaviour class at **SpotifyService** gameObject.
+For development and debug purposes, you can disable the Spotify **AutoConnect** feature. This also helps if you don't want to have the Spotify Login page ppear each time you enter Unity's **PlayMode**.
+
+You can disable it in the **SpotifyService** MonoBehaviour class at **SpotifyService** gameObject.
 
 ![alt text](https://github.com/ssemino/ChillFi/blob/main/Assets/Resources/README/readme01.png)
 
