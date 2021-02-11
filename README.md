@@ -13,7 +13,7 @@ Watch it live here: https://chillfi.live
 
 **Spotify** to play music in your stream (no sound comes from the actual ChillFi game)
 
-**OBS Streamlabs** to gather your video/audio and stream to Youtube
+**Streamlabs OBS** to gather your video/audio and stream to Youtube
 
  ### Key Details
  
