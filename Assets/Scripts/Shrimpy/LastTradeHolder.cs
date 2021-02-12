@@ -9,7 +9,33 @@ public class LastTradeHolder : MonoBehaviour
 {
     [SerializeField]
     Text symbol, bidType, quantity, cost;
+
+    [SerializeField]
+    float lifeTimeLimit = 30f;
+
+    [SerializeField]
+    float lifeTime;
     
+    void Start()
+    {
+        StartCoroutine(LifeTimeCounter());
+    }
+
+    IEnumerator LifeTimeCounter()
+    {
+        while(lifeTime < lifeTimeLimit)
+        {
+            lifeTime += Time.deltaTime;
+            yield return null;
+        }
+            
+        Debug.LogWarning("LifeTime Limit has been reached!");
+        ShrimpyService.instance.enabled = false;
+        ShrimpyService.instance.enabled = true;
+
+        yield return true;
+    }
+
     public void InitTradeData(Order order, string symbol, string equivalent)
     {
         this.symbol.text = symbol;
@@ -20,13 +46,12 @@ public class LastTradeHolder : MonoBehaviour
             int askIndex = 0;
             if (order.asks[0].quantity == cost.text) askIndex = 1;
             bidType.text = "SELL";
-            Debug.Log(StringFormatter.FormatIntoTwoDecimalValue(float.Parse(order.asks[askIndex].quantity)));
             quantity.text = StringFormatter.GetTwoDigitsValueWithMultiplier(float.Parse(order.asks[askIndex].quantity), 7);
             if (quantity.text == "0.00" || quantity.text == "0")
                 quantity.text = "0.01";
 
             float costString = StringFormatter.FormatIntoTwoDecimalValue(float.Parse(order.asks[askIndex].quantity) * float.Parse(order.asks[askIndex].price) * ShrimpyService.instance.btcPrice);
-            Debug.Log(costString);
+            
             cost.text = "$" + StringFormatter.GetAmericanFormat(costString);
         }
         else
@@ -39,7 +64,7 @@ public class LastTradeHolder : MonoBehaviour
                 quantity.text = "0.01";
 
             float costString = StringFormatter.FormatIntoTwoDecimalValue(float.Parse(order.bids[bidIndex].quantity) * float.Parse(order.bids[bidIndex].price) * ShrimpyService.instance.btcPrice);
-            Debug.Log(costString);
+            
             cost.text = "$" + StringFormatter.GetAmericanFormat(costString).ToString();
         }
     }

@@ -38,6 +38,11 @@ public class ShrimpyService : MonoBehaviour
         GetLastTrade();
     }
     
+    void OnDisable()
+    {
+        Debug.LogWarning("Shrimpy has been rebooted!");
+    }
+
     void OnExchangesReceived()
     {
         Invoke("GetLastTrade", 2f);

@@ -144,6 +144,8 @@ MonoBehaviour:
   bidType: {fileID: 367992564813629459}
   quantity: {fileID: 7671009655468649461}
   cost: {fileID: 539000535385871389}
+  lifeTimeLimit: 30
+  lifeTime: 0
 --- !u!1 &2551083558914722226
 GameObject:
   m_ObjectHideFlags: 0
