@@ -68,5 +68,13 @@ public class LastTradeHolder : MonoBehaviour
             cost.text = "$" + StringFormatter.GetAmericanFormat(costString).ToString();
         }
     }
+
+    public void InitTradeData(LatestTrade latestTrade)
+    {
+        this.symbol.text = latestTrade.crypto;
+        bidType.text = latestTrade.side;
+        quantity.text = StringFormatter.GetTwoDigitsValueWithMultiplier(float.Parse(latestTrade.size), 7);
+        cost.text = "$" + StringFormatter.GetAmericanFormat(StringFormatter.FormatIntoTwoDecimalValue(latestTrade.value));
+    }
 }
 

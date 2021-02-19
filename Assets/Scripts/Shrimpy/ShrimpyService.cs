@@ -35,7 +35,7 @@ public class ShrimpyService : MonoBehaviour
 
     private void Start()
     {
-        GetLastTrade();
+        //GetLastTrade();
     }
     
     void OnDisable()

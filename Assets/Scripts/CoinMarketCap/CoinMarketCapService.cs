@@ -27,6 +27,7 @@ public class CoinMarketCapService : MonoBehaviour
 
     void GetPositions()
     {
+        Debug.Log("GetPositions()");
         StartCoroutine(GetListingReq());
     }
 
