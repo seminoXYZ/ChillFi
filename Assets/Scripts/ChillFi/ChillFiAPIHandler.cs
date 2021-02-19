@@ -23,6 +23,9 @@ public class ChillFiAPIHandler : MonoBehaviour
     [SerializeField]
     GameObject lastTradePrefab, content;
 
+    public delegate void OnLatestTradeReceived();
+    public static OnLatestTradeReceived onLatestTradeReceived;
+
     void Start()
     {
         GetHoldings();
@@ -92,6 +95,7 @@ public class ChillFiAPIHandler : MonoBehaviour
         LastTradeHolder lastTradeHolder = Instantiate(lastTradePrefab, content.transform).GetComponent<LastTradeHolder>();
         RemoveTheTopTrade();
         lastTradeHolder.InitTradeData(latestTrade);
+        onLatestTradeReceived();
         Invoke("GetLastTrade", 2f);
     }
 
