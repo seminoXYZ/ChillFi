@@ -6757,8 +6757,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 510d8ae65a8da4872b5ad10d35cf3aed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  holdingsURL: https://chillfi.azurewebsites.net/holdings
-  latestTradesURL: https://chillfi.azurewebsites.net/latest-trades
+  holdingsURL: https://chillfi.herokuapp.com/holdings
+  latestTradesURL: https://chillfi.herokuapp.com/latest-trades
   holdingsString: 
   holdings:
     holdings: []
