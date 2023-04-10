@@ -1,11 +1,9 @@
 
-![alt text](https://github.com/ssemino/ChillFi/blob/main/Assets/Resources/README/readme00.png)
+![chillfi](https://user-images.githubusercontent.com/126365145/230808258-9815ec78-47da-4628-8645-cebf3b6dd071.png)
  
  ## Introduction
  
 ChillFi, or Chill Finance, is the love child between #LoFi beats and #DeFi trading. The procedurally generated game streams 24/7 to Youtube, displays live cryptocurrency exchange data, and plays a copyright-free Spotify music playlist.
-
-Watch it live here: https://chillfi.live
 
 ### Necessary Software
 
